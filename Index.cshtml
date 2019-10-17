@@ -1,0 +1,76 @@
+﻿@page
+@model Fandoms.Pages.orders.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.order[0].Item)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.order[0].Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.order)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Item)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Onumber">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Onumber">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Onumber">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (User.IsInRole("ARMY"))
+{
+    <section>
+        <h1>
+            Welcome, ARMY!
+        </h1>
+    </section>
+
+}
+else if (User.IsInRole("Ahgase"))
+{
+    <section>
+        <h1>
+            Welcome, Ahgase!
+        </h1>
+    </section>
+}
+else if (User.IsInRole("Monbebe"))
+{
+    <section>
+        <h1>
+            Welcome, Monbebe!
+        </h1>
+    </section>
+}
+else if (User.IsInRole("Carat"))
+{
+    <section>
+        <h1>
+            Welcome, Carat!
+        </h1>
+    </section>
+}
